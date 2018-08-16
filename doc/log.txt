@@ -1,0 +1,92 @@
+﻿
+
+# EventMap
+
+# http://khh.travel/ScenicListByMap.aspx?a=1056&l=1
+	20160929,1400,20160929,1630,【觀光工廠】珍芳烏魚子見學工廠DIY體驗,高雄市新衙路296巷81弄13號,http://www.citytalk.tw/event/233226-%E3%80%90%E8%A7%80%E5%85%89%E5%B7%A5%E5%BB%A0%E3%80%91%E7%8F%8D%E8%8A%B3%E7%83%8F%E9%AD%9A%E5%AD%90%E8%A6%8B%E5%AD%B8%E5%B7%A5%E5%BB%A0DIY%E9%AB%94%E9%A9%97
+	20160929,0800,20160929,1700,【觀光工廠】台灣滷味博物館DIY體驗,高雄市岡山區本洲產業園區本工一路25號,http://www.citytalk.tw/event/233225-%E3%80%90%E8%A7%80%E5%85%89%E5%B7%A5%E5%BB%A0%E3%80%91%E5%8F%B0%E7%81%A3%E6%BB%B7%E5%91%B3%E5%8D%9A%E7%89%A9%E9%A4%A8DIY%E9%AB%94%E9%A9%97
+	20160929,0900,20160929,1800,【觀光工廠】彪琥台灣鞋故事館DIY體驗,高雄市三民區民族一路335巷43-1號,http://www.citytalk.tw/event/230694-%E3%80%90%E8%A7%80%E5%85%89%E5%B7%A5%E5%BB%A0%E3%80%91%E5%BD%AA%E7%90%A5%E5%8F%B0%E7%81%A3%E9%9E%8B%E6%95%85%E4%BA%8B%E9%A4%A8DIY%E9%AB%94%E9%A9%97
+	20160929,1200,20160929,2000,火腿藝廊｜好字在高雄！活版鉛字創意展,高雄市大義街2-1號,http://www.citytalk.tw/event/279230-%E7%81%AB%E8%85%BF%E8%97%9D%E5%BB%8A%EF%BD%9C%E5%A5%BD%E5%AD%97%E5%9C%A8%E9%AB%98%E9%9B%84%EF%BC%81%E6%B4%BB%E7%89%88%E9%89%9B%E5%AD%97%E5%89%B5%E6%84%8F%E5%B1%95
+	20160929,1400,20160929,2200,檨仔林埤濕地公園,高雄市三民區鼎金後路461巷,http://khh.travel/Article.aspx?a=6200&l=1&stype=1056&sitem=4080
+
+# 方便的新增/修改活動操作方式！
+	
+# 如何提供修改個人活動？
+# 刪除活動時的處理方式？
+
+# 直接點選地點新增活動？
+# 直接點選地點修改/刪除活動？
+
+# Accupass 活動通 - 發現身邊的有趣活動 - 找活動及辦活動首選(https://www.accupass.com/)
+	
+# Firebase(https://firebase.google.com/)
+
+	# Firebase console(https://console.firebase.google.com/)
+		https://console.firebase.google.com/u/0/project/firebase-activitymap/overview
+		https://console.firebase.google.com/u/0/project/firebase-activitymap/database
+	
+	# Firebase(https://firebase.google.com/features/)
+	
+	# Documentation  |  Firebase(https://firebase.google.com/docs/)
+	
+		# Add Firebase to your JavaScript Project  |  Firebase(https://firebase.google.com/docs/web/setup)
+	
+		# Firebase Authentication  |  Firebase(https://firebase.google.com/docs/auth/)
+		
+		# Firebase Realtime Database  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/)
+			# Installation & Setup in JavaScript  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/web/start)
+			# Structure Your Database  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/web/structure-data)
+			# Read and Write Data on the Web  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/web/read-and-write)
+			# Work with Lists of Data on the Web  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/web/lists-of-data)
+		
+		# Firebase API Reference  |  Firebase(https://firebase.google.com/docs/reference/)
+			# Overview  |  Firebase(https://firebase.google.com/docs/reference/js/)
+				# Namespace: firebase  |  Firebase(https://firebase.google.com/docs/reference/js/firebase)
+	
+		# Firebase Cloud Messaging  |  Firebase(https://firebase.google.com/docs/cloud-messaging/)
+			Set Up a JavaScript Firebase Cloud Messaging Client App  |  Firebase(https://firebase.google.com/docs/cloud-messaging/js/client)
+			
+		# Cloud Storage  |  Firebase(https://firebase.google.com/docs/storage/)
+		
+		# Interface: DataSnapshot  |  Firebase(https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot)
+		
+		https://firebase.google.com/docs/cli/
+		https://firebase.google.com/docs/hosting/
+	
+		https://firebase.google.com/docs/samples/
+			https://github.com/firebase/quickstart-js
+			https://github.com/firebase/quickstart-js/tree/master/database
+			https://github.com/firebase/quickstart-js/tree/master/storage
+	
+	# 新版Firebase來了！Google要為App開發者打造一套萬用雲端後臺 | iThome(http://www.ithome.com.tw/news/106045)
+	# Firebase 是什麼 ? 集 APP 後端開發與分析於一身的強大工具！ - ALPHA Camp Blog(https://blog.alphacamp.co/2016/07/22/firebase/)
+	
+	# Firebase Hosting 靜態網站部署試用 – Medium(https://medium.com/@OvisSung/firebase-hosting-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99%E9%83%A8%E7%BD%B2-deploy-8d5d7fd3b836#.3nb0744wh)
+	
+	# The Firebase Blog: How To Build a Presence System(https://firebase.googleblog.com/2013/06/how-to-build-presence-system.html)
+
+	# How do I link each user to their data in Firebase? - Stack Overflow(http://stackoverflow.com/questions/30910704/how-do-i-link-each-user-to-their-data-in-firebase)
+
+# Google 地圖平台 - Geo-location API  |  Google Maps Platform  |  Google Cloud(https://cloud.google.com/maps-platform/)
+	# Overview  |  Maps JavaScript API  |  Google Developers(https://developers.google.com/maps/documentation/javascript/tutorial)
+
+# OpenStreetMap(https://www.openstreetmap.org/)
+
+	OpenStreetMap - Wikipedia(https://en.wikipedia.org/wiki/OpenStreetMap)
+
+# Leaflet - a JavaScript library for interactive maps(https://leafletjs.com/)	
+	Leaflet/Leaflet: JavaScript library for mobile-friendly interactive maps(https://github.com/Leaflet/Leaflet)
+	
+	# Leaflet.EasyButton(http://cliffcloud.github.io/Leaflet.EasyButton/v1/)
+		CliffCloud/Leaflet.EasyButton: leaflet control buttons with icons and callbacks(https://github.com/CliffCloud/Leaflet.EasyButton)
+
+	# Esri Leaflet(http://esri.github.io/esri-leaflet/)
+		Esri/esri-leaflet: A lightweight set of tools for working with ArcGIS services in Leaflet.(https://github.com/Esri/esri-leaflet)
+
+	# javascript - Leaflet: how to add a new and remove an old marker every time the user click on the map? - Geographic Information Systems Stack Exchange(https://gis.stackexchange.com/questions/238414/leaflet-how-to-add-a-new-and-remove-an-old-marker-every-time-the-user-click-on/238419)
+	
+# Minimize / Maximize modal of Bootstrap by using jQuery: 3 demos(https://www.jquery-az.com/minimize-maximize-modal-of-bootstrap-by-using-jquery-3-demos/)
+	A demo of modal with minimize and maximize options(https://www.jquery-az.com/jquery/demo.php?ex=58.0_1)
+	
+# Custom Bootstrap modal backdrops(https://codepen.io/artzeeone/pen/yJVJBr)
+	

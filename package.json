@@ -1,0 +1,7 @@
+{
+	"main": "nw_main.js",
+	"name": "EventMap",
+	"version": "0.0.1",
+	"description": "Event Map", 
+	"author": "ace"
+}
