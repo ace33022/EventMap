@@ -19,6 +19,7 @@
 
 # Accupass 活動通 - 發現身邊的有趣活動 - 找活動及辦活動首選(https://www.accupass.com/)
 	
+	
 # Firebase(https://firebase.google.com/)
 
 	# Firebase console(https://console.firebase.google.com/)
@@ -90,3 +91,14 @@
 	
 # Custom Bootstrap modal backdrops(https://codepen.io/artzeeone/pen/yJVJBr)
 	
+# Latitude and Longitude Finder on Map Get Coordinates(https://www.latlong.net/)
+
+# stefanocudini/leaflet-search: Search stuff in a Leaflet map(https://github.com/stefanocudini/leaflet-search)
+	javascript - Searching markers with Leaflet.Control.Search from drop down list - Stack Overflow(https://stackoverflow.com/questions/35772717/searching-markers-with-leaflet-control-search-from-drop-down-list)
+	
+	leaflet-search/simple.html at master · stefanocudini/leaflet-search(https://github.com/stefanocudini/leaflet-search/blob/master/examples/simple.html)
+	
+# https://eonasdan.github.io/bootstrap-datetimepicker/
+	onchange - jQuery bootstrap-datetimepicker change event - Stack Overflow(https://stackoverflow.com/questions/31858920/jquery-bootstrap-datetimepicker-change-event)
+
+# 介紹資料改用 TextArea
