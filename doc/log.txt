@@ -2,6 +2,11 @@
 
 # EventMap
 
+	https://ace33022.github.io/EventMap/
+	http://127.0.0.1:8080/program/MAP00030
+	
+# Latitude and Longitude Finder on Map Get Coordinates(https://www.latlong.net/)
+
 # http://khh.travel/ScenicListByMap.aspx?a=1056&l=1
 	20160929,1400,20160929,1630,【觀光工廠】珍芳烏魚子見學工廠DIY體驗,高雄市新衙路296巷81弄13號,http://www.citytalk.tw/event/233226-%E3%80%90%E8%A7%80%E5%85%89%E5%B7%A5%E5%BB%A0%E3%80%91%E7%8F%8D%E8%8A%B3%E7%83%8F%E9%AD%9A%E5%AD%90%E8%A6%8B%E5%AD%B8%E5%B7%A5%E5%BB%A0DIY%E9%AB%94%E9%A9%97
 	20160929,0800,20160929,1700,【觀光工廠】台灣滷味博物館DIY體驗,高雄市岡山區本洲產業園區本工一路25號,http://www.citytalk.tw/event/233225-%E3%80%90%E8%A7%80%E5%85%89%E5%B7%A5%E5%BB%A0%E3%80%91%E5%8F%B0%E7%81%A3%E6%BB%B7%E5%91%B3%E5%8D%9A%E7%89%A9%E9%A4%A8DIY%E9%AB%94%E9%A9%97
@@ -9,16 +14,37 @@
 	20160929,1200,20160929,2000,火腿藝廊｜好字在高雄！活版鉛字創意展,高雄市大義街2-1號,http://www.citytalk.tw/event/279230-%E7%81%AB%E8%85%BF%E8%97%9D%E5%BB%8A%EF%BD%9C%E5%A5%BD%E5%AD%97%E5%9C%A8%E9%AB%98%E9%9B%84%EF%BC%81%E6%B4%BB%E7%89%88%E9%89%9B%E5%AD%97%E5%89%B5%E6%84%8F%E5%B1%95
 	20160929,1400,20160929,2200,檨仔林埤濕地公園,高雄市三民區鼎金後路461巷,http://khh.travel/Article.aspx?a=6200&l=1&stype=1056&sitem=4080
 
+# 記錄個人活動資料！
+
+# 如何修改個人活動？
+
+# 刪除活動的處理方式？
+
+# 區域內活動資料查詢！
+
+	# stefanocudini/leaflet-search: Search stuff in a Leaflet map(https://github.com/stefanocudini/leaflet-search)
+		javascript - Searching markers with Leaflet.Control.Search from drop down list - Stack Overflow(https://stackoverflow.com/questions/35772717/searching-markers-with-leaflet-control-search-from-drop-down-list)
+	
+		leaflet-search/simple.html at master · stefanocudini/leaflet-search(https://github.com/stefanocudini/leaflet-search/blob/master/examples/simple.html)
+		
+		Leaflet.Control.Search(http://labs.easyblog.it/maps/leaflet-search/)
+		stefanocudini/leaflet-search: Search stuff in a Leaflet map(https://github.com/stefanocudini/leaflet-search)
+
+# 移動地點圖標的方法？
+
+# 介紹資料改用 TextArea
+
 # 方便的新增/修改活動操作方式！
 	
-# 如何提供修改個人活動？
-# 刪除活動時的處理方式？
-
 # 直接點選地點新增活動？
 # 直接點選地點修改/刪除活動？
 
+# 愛食記 - 台灣美食App、餐廳推薦(https://ifoodie.tw/)
+
+	# 每月底的煎餃特價優惠
+
 # Accupass 活動通 - 發現身邊的有趣活動 - 找活動及辦活動首選(https://www.accupass.com/)
-	
+
 	
 # Firebase(https://firebase.google.com/)
 
@@ -33,6 +59,8 @@
 		# Add Firebase to your JavaScript Project  |  Firebase(https://firebase.google.com/docs/web/setup)
 	
 		# Firebase Authentication  |  Firebase(https://firebase.google.com/docs/auth/)
+			# Get Started with Firebase Authentication on Websites  |  Firebase(https://firebase.google.com/docs/auth/web/start)
+			# Authenticate Using Google Sign-In with JavaScript  |  Firebase(https://firebase.google.com/docs/auth/web/google-signin)
 		
 		# Firebase Realtime Database  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/)
 			# Installation & Setup in JavaScript  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/web/start)
@@ -50,6 +78,8 @@
 		# Cloud Storage  |  Firebase(https://firebase.google.com/docs/storage/)
 		
 		# Interface: DataSnapshot  |  Firebase(https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot)
+		
+		# Transactions and batched writes  |  Firebase(https://firebase.google.com/docs/firestore/manage-data/transactions)
 		
 		https://firebase.google.com/docs/cli/
 		https://firebase.google.com/docs/hosting/
@@ -91,14 +121,6 @@
 	
 # Custom Bootstrap modal backdrops(https://codepen.io/artzeeone/pen/yJVJBr)
 	
-# Latitude and Longitude Finder on Map Get Coordinates(https://www.latlong.net/)
-
-# stefanocudini/leaflet-search: Search stuff in a Leaflet map(https://github.com/stefanocudini/leaflet-search)
-	javascript - Searching markers with Leaflet.Control.Search from drop down list - Stack Overflow(https://stackoverflow.com/questions/35772717/searching-markers-with-leaflet-control-search-from-drop-down-list)
-	
-	leaflet-search/simple.html at master · stefanocudini/leaflet-search(https://github.com/stefanocudini/leaflet-search/blob/master/examples/simple.html)
-	
 # https://eonasdan.github.io/bootstrap-datetimepicker/
 	onchange - jQuery bootstrap-datetimepicker change event - Stack Overflow(https://stackoverflow.com/questions/31858920/jquery-bootstrap-datetimepicker-change-event)
 
-# 介紹資料改用 TextArea

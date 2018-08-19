@@ -58,26 +58,27 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 
 			jQuery(window).on('blur', function(event) {});
 			
-			function login() {
+			function login(callback) {
 			
 				if (firebase.auth().currentUser) {
 
 					// User is signed in.
-					// jQuery('#modalInsertActivity').modal('show');
+					// console.log(firebase.auth().currentUser);
+					
+					if (typeof callback === 'function') callback();
 				}
 				else {
 
 					// No user is signed in.
-					// doLogin(new firebase.auth.GoogleAuthProvider(), function() {jQuery('#modalInsertActivity').modal('show');});
-			
-					// onAuthStateChanged
-					firebase.auth()
-					.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-					.then(function(result) {
+					firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+					.then(function(authData) {
 
-						var token = result.credential.accessToken;  // This gives you a Google Access Token. You can use it to access the Google API.
-						var user = result.user;                      // The signed-in user info.
-
+						var token = authData.credential.accessToken;  // This gives you a Google Access Token. You can use it to access the Google API.
+						var user = authData.user;                      // The signed-in user info.
+						
+						easyLoginButton.disable();
+						easyLogoutButton.enable();
+						
 						user.providerData.forEach(function(profile) {
 
 							// console.log("Sign-in provider: " + profile.providerId);
@@ -87,7 +88,7 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 							// console.log("  Photo URL: " + profile.photoURL);
 						});
 
-						// if (typeof callback === 'function') callback(result);
+						if (typeof callback === 'function') callback();
 					})
 					.catch(function(error) {
 
@@ -99,6 +100,31 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 						var credential = error.credential;	// The firebase.auth.AuthCredential type that was used.
 					});
 				}
+			}
+			
+			function logout(callback) {
+			
+				FormUtils.showConfirmMessage('確定登出系統？',
+				
+					function() {
+				
+						firebase.auth().signOut()
+						.then(function() {
+
+								// Sign-out successful.
+								easyLoginButton.enable();
+								easyLogoutButton.disable();
+								
+								if (typeof callback === 'function') callback();
+							}, 
+							function(error) {
+
+								// An error happened.
+								console.log(error);
+							}
+						);
+					}
+				);
 			}
 		
 			function routineEvents(date, map) {
@@ -231,6 +257,9 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 									+ '  <h4 class="modal-title">' + data["title"] + '</h4>'
 									+ '</div>';
 							modalHeader = jQuery(tag);
+							
+							if ((typeof data["url"] !== 'undefined') && (data["url"] != '')) modalHeader.find('.modal-title').append('<a href="' + data["url"] + '" target="_blank"><span class="fa fa-home"></span></a>');
+							
 							baseModal.find('.modal-content').append(modalHeader);
 
 							tag = '<div class="modal-body" style="position: absolute; top: 50px; bottom: 60px; width: 100%; overflow: auto;"></div>';
@@ -252,6 +281,10 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 							else if ((typeof data["picture_url"] !== 'undefined') && (data["picture_url"] != '')) {
 						
 								modalBody.append('<img style="width: 100%; height: 100%;" src="' + data["picture_url"] + '"></img>');
+							}
+							else if (typeof data["introduction"] !== 'undefined') {
+							
+								modalBody.append('<div style="width: 100%; height: 100%;">' + data["introduction"] + '</div>');
 							}
 
 							jQuery('#' + modalId).on('hidden.bs.modal', function() { jQuery(this).remove(); });
@@ -606,10 +639,10 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 
 				states: [
 					{
-						stateName: "zoom-to-default-position",        // name the state
-						icon: "fa-home",
-						title: "zoom to default position",
-						onClick: function(btn, map) {
+						"stateName": "zoom-to-default-position",        // name the state
+						"title": "zoom to default position",
+						"icon": "fa-home",
+						"onClick": function(btn, map) {
 					
 							map.setView([selfPosition["latitude"], selfPosition["longitude"]], 12);
 						}
@@ -643,16 +676,66 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 								"end_date": moment(now).add(4, 'hours').format('YYYYMMDD'),
 								"end_time": moment(now).add(4, 'hours').format('HHmm')
 							};
-						
-							showEventInputModal('新增活動資料', btn, map, eventData, function(eventData) {
 							
-								var eventsPath = 'events' + '/' + moment(DateTimeUtils.doDateTimeStringToDateTime(eventData["begin_date"] + eventData["begin_time"] + '00')).format('YYYY/MM/DD');
-								var newEventRef = firebase.database().ref(eventsPath).push();
+							login(function() {
+							
+								showEventInputModal('新增活動資料', btn, map, eventData, function(eventData) {
+								
+									var eventsPath = 'events' + '/' + moment(DateTimeUtils.doDateTimeStringToDateTime(eventData["begin_date"] + eventData["begin_time"] + '00')).format('YYYY/MM/DD');
+									var usersPath = 'users' + '/' + firebase.auth().currentUser.uid;
 									
-								newEventRef.set(eventData, function() {});
+									var newEventRef = firebase.database().ref(eventsPath).push();
+									var usersData = {};
+									
+									usersData[newEventRef.key] = {
+									
+										"title": eventData["title"],
+										"begin_date": moment(DateTimeUtils.doDateTimeStringToDateTime(eventData["begin_date"] + eventData["begin_time"] + '00')).format('YYYYMMDD'),
+										"begin_time": moment(DateTimeUtils.doDateTimeStringToDateTime(eventData["begin_date"] + eventData["begin_time"] + '00')).format('HHmm')
+									};
+									
+									// transaction?
+									firebase.database().ref(usersPath).set(usersData, function() {
+									
+										newEventRef.set(eventData, function() {
+										
+											// fadeMessage('資料登錄完成‧‧‧');
+										});
+									});
+								});
 							});
 						}
 					}
+				]
+			});
+			
+			var easyLoginButton = L.easyButton({
+
+				states: [
+					{
+						"stateName": "login",
+						"icon": "fa-sign-in",
+						"title": "Login",
+						"onClick": function(btn, map) {
+						
+							login();
+						}
+					} 
+				]
+			});
+			
+			var easyLogoutButton = L.easyButton({
+
+				states: [
+					{
+						"stateName": "logout",
+						"icon": "fa-sign-out",
+						"title": "Logout",
+						"onClick": function(btn, map) {
+						
+							logout();
+						}
+					} 
 				]
 			});
 			
@@ -660,10 +743,10 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 
 				states: [
 					{
-						stateName: "suggest",
-						icon: "fa-user",
-						title: "give me suggest",
-						onClick: function(btn, map) {
+						"stateName": "suggest",
+						"title": "give me suggest",
+						"icon": "fa-comments",
+						"onClick": function(btn, map) {
 					
 							var modalId = 'modal' + Math.random().toString(36).substr(2, 6);
 							var textCommentId = 'textComment' + Math.random().toString(36).substr(2, 6);
@@ -801,7 +884,22 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 			
 			easyDefaultPositionButton.options.states[0].onClick(easyDefaultPositionButton, map);
 			
-			easyAddNewEventButton.addTo(map);
+			if ((location.protocol == 'http:') || (location.protocol == 'https:')) {
+			
+				easyAddNewEventButton.addTo(map);
+			
+				easyLoginButton.addTo(map);
+				easyLogoutButton.addTo(map);
+				
+				if (firebase.auth().currentUser) {
+				
+					easyLogoutButton.disable();
+				}
+				else {
+				
+					easyLoginButton.disable();
+				}
+			}
 			
 			easySuggestButton.addTo(map);
 
@@ -857,6 +955,6 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 					firebaseListener(new Date(), map);
 				}, 24 * 60 * 60 * 1000);
 			}, (new Date((moment(openDateTime).add(2, 'days').toDate()).getFullYear(), (moment(openDateTime).add(2, 'days').toDate()).getMonth(), (moment(openDateTime).add(2, 'days').toDate()).getDate())) - openDateTime);
-		});
+		});	// document ready
 	});	
 });
