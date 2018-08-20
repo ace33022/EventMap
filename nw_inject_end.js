@@ -681,26 +681,38 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 							
 								showEventInputModal('新增活動資料', btn, map, eventData, function(eventData) {
 								
-									var eventsPath = 'events' + '/' + moment(DateTimeUtils.doDateTimeStringToDateTime(eventData["begin_date"] + eventData["begin_time"] + '00')).format('YYYY/MM/DD');
 									var usersPath = 'users' + '/' + firebase.auth().currentUser.uid;
+									var eventsPath = 'events' + '/' + moment(DateTimeUtils.doDateTimeStringToDateTime(eventData["begin_date"] + eventData["begin_time"] + '00')).format('YYYY/MM/DD');
 									
-									var newEventRef = firebase.database().ref(eventsPath).push();
-									var usersData = {};
+									var newEventRef = firebase.database().ref(usersPath).push();
 									
-									usersData[newEventRef.key] = {
+									var usersData = {
 									
 										"title": eventData["title"],
 										"begin_date": moment(DateTimeUtils.doDateTimeStringToDateTime(eventData["begin_date"] + eventData["begin_time"] + '00')).format('YYYYMMDD'),
 										"begin_time": moment(DateTimeUtils.doDateTimeStringToDateTime(eventData["begin_date"] + eventData["begin_time"] + '00')).format('HHmm')
 									};
 									
-									// transaction?
-									firebase.database().ref(usersPath).set(usersData, function() {
+									newEventRef.set(usersData, function(error) {
 									
-										newEventRef.set(eventData, function() {
+										if (error == null) {
 										
-											// fadeMessage('資料登錄完成‧‧‧');
-										});
+											firebase.database().ref(eventsPath + '/' + newEventRef.key).set(eventData, function(error) {
+										
+												if (error == null) {
+												
+													FormUtils.showFlashMessage('資料登錄完成‧‧‧');
+												}
+												else {
+												
+													FormUtils.showMessage('資料登錄過程有誤！！錯誤訊息：' + error);
+												}
+											});
+										}
+										else {
+										
+											FormUtils.showMessage('資料登錄過程有誤！！錯誤訊息：' + error);
+										}
 									});
 								});
 							});
@@ -834,7 +846,7 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 								
 								if (showRegardMessage == true) {
 								
-									// flash message
+									FormUtils.showMessage('感謝提供建議或問題反應！！');
 								}
 							});
 							

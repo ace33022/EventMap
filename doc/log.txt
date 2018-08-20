@@ -14,12 +14,18 @@
 	20160929,1200,20160929,2000,火腿藝廊｜好字在高雄！活版鉛字創意展,高雄市大義街2-1號,http://www.citytalk.tw/event/279230-%E7%81%AB%E8%85%BF%E8%97%9D%E5%BB%8A%EF%BD%9C%E5%A5%BD%E5%AD%97%E5%9C%A8%E9%AB%98%E9%9B%84%EF%BC%81%E6%B4%BB%E7%89%88%E9%89%9B%E5%AD%97%E5%89%B5%E6%84%8F%E5%B1%95
 	20160929,1400,20160929,2200,檨仔林埤濕地公園,高雄市三民區鼎金後路461巷,http://khh.travel/Article.aspx?a=6200&l=1&stype=1056&sitem=4080
 
-# 記錄個人活動資料！
+# 介紹資料改用 TextArea
 
 # 如何修改個人活動？
+	# 取得個人建立之活動資料
+		# filter方法？
 
-# 刪除活動的處理方式？
+# 刪除個人活動的處理方式？
+	# 新增旗標控制活動是否有效？
 
+# 移動地點圖標的方法？
+	# 新增/修改活動資料時方便定位！
+	
 # 區域內活動資料查詢！
 
 	# stefanocudini/leaflet-search: Search stuff in a Leaflet map(https://github.com/stefanocudini/leaflet-search)
@@ -29,23 +35,17 @@
 		
 		Leaflet.Control.Search(http://labs.easyblog.it/maps/leaflet-search/)
 		stefanocudini/leaflet-search: Search stuff in a Leaflet map(https://github.com/stefanocudini/leaflet-search)
-
-# 移動地點圖標的方法？
-
-# 介紹資料改用 TextArea
-
-# 方便的新增/修改活動操作方式！
-	
-# 直接點選地點新增活動？
-# 直接點選地點修改/刪除活動？
+		
+# 查詢指定時間區間的活動資料
+	# 只可查詢今天以後的資料
+	# 資料呈現使用藍色圖標
 
 # 愛食記 - 台灣美食App、餐廳推薦(https://ifoodie.tw/)
 
 	# 每月底的煎餃特價優惠
-
+	
 # Accupass 活動通 - 發現身邊的有趣活動 - 找活動及辦活動首選(https://www.accupass.com/)
 
-	
 # Firebase(https://firebase.google.com/)
 
 	# Firebase console(https://console.firebase.google.com/)
@@ -80,6 +80,12 @@
 		# Interface: DataSnapshot  |  Firebase(https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot)
 		
 		# Transactions and batched writes  |  Firebase(https://firebase.google.com/docs/firestore/manage-data/transactions)
+		
+		# Overview  |  Firebase(https://firebase.google.com/docs/reference/js/)
+			Namespace: database  |  Firebase(https://firebase.google.com/docs/reference/js/firebase.database)
+		
+		https://firebase.google.com/docs/reference/node/firebase
+		https://firebase.google.com/docs/reference/node/firebase.database.Reference#transaction
 		
 		https://firebase.google.com/docs/cli/
 		https://firebase.google.com/docs/hosting/
