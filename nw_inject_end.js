@@ -127,7 +127,7 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				);
 			}
 		
-			function routineEvents(date, map) {
+			function routineEvents(date, layerGroup, map) {
 			
 				var path = 'routine_events/week' + '/' + date.getDay();
 				
@@ -142,12 +142,12 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 						
 						if (data["end_time"] < data["begin_time"]) data["end_date"] = moment(date).add(1, 'days').format('YYYYMMDD');
 						
-						setMarker(data, map);
+						setMarker(data, layerGroup, map);
 					});
 				});
 			}
 					
-			function firebaseListener(date, map) {
+			function firebaseListener(date, layerGroup, map) {
 			
 				// todo: off listener
 
@@ -158,11 +158,11 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 
 					// console.log(snapshot.key);
 					
-					setMarker(snapshot.val(), map);
+					setMarker(snapshot.val(), layerGroup, map);
 				});
 			}
-					
-			function setMarker(data, map) {
+			
+			function setMarker(data, layerGroup, map) {
 
 				var divIcon = L.divIcon({"iconSize": L.point(0, 0)});
 			
@@ -186,16 +186,16 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 						// 活動開始
 						setTimeout(function() {
 
-							map.removeLayer(marker);
-							setMarker(data, map);
+							layerGroup.removeLayer(marker);
+							setMarker(data, layerGroup, map);
 						}, (60 - now.getMinutes()) * 60 * 1000);
 					}
 					else {
 					
 						setTimeout(function() {
 
-							map.removeLayer(marker);
-							setMarker(data, map);
+							layerGroup.removeLayer(marker);
+							setMarker(data, layerGroup, map);
 						}, beginDateTime - now - (60 * 60 * 1000));
 					}
 				}
@@ -205,13 +205,14 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 					if ((now - endDateTime) <= (2 * 60 * 60 *1000)) {
 					
 						effectiveMarker = true;
+						
 						divIcon = L.divIcon({"iconSize": L.point(25, 25), "className": "leaflet-div-icon-actived"});
 						
 						// 超過則移除結束的活動。
 						setTimeout(function() {
 
-							map.removeLayer(marker);
-							setMarker(data, map);
+							layerGroup.removeLayer(marker);
+							setMarker(data, layerGroup, map);
 						}, (2 * 60 * 60 * 1000) - (now - endDateTime));
 					}
 				}
@@ -219,19 +220,22 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				
 					// 活動中
 					effectiveMarker = true;
+					
 					divIcon = L.divIcon({"iconSize": L.point(25, 25), "className": "leaflet-div-icon-activing"});
 				
 					// 活動結束
 					setTimeout(function() {
 
-						map.removeLayer(marker);
-						setMarker(data, map);
+						layerGroup.removeLayer(marker);
+						setMarker(data, layerGroup, map);
 					}, DateTimeUtils.doDateTimeStringToDateTime(data['end_date'] + data['end_time'] + '00') - now);
 				}
 
 				if (effectiveMarker == true) {
 				
-					marker = L.marker([data.lat, data.lng], {"icon": divIcon}).addTo(map);
+					marker = new L.marker([data.lat, data.lng], {"icon": divIcon});
+					
+					marker.originalData = data;
 			
 					marker.bindTooltip('<b>' + data["title"] + '</b><br />' + '' + moment(beginDateTime).format('YYYY/MM/DD HH:mm') + '<br />' + moment(endDateTime).format('YYYY/MM/DD HH:mm'));
 			
@@ -292,6 +296,8 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 							jQuery('#' + modalId).modal('show');
 						}
 					});
+
+					marker.addTo(layerGroup);
 				}
 			}
 
@@ -497,11 +503,34 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 						
 						if ((jQuery('#' + inpLatId).val() !='' ) && (jQuery('#' + inpLngId).val() != '')) {
 						
-							marker = L.marker([jQuery('#' + inpLatId).val(), jQuery('#' + inpLngId).val()], {"icon": divIcon}).addTo(map);
+							marker = L.marker([jQuery('#' + inpLatId).val(), jQuery('#' + inpLngId).val()], {"icon": divIcon, "draggable": true}).addTo(map);
 							
 							marker.bindTooltip('<b>' + jQuery('#' + inpTitleId).val() + '</b><br />' + '' + moment(beginDateTime).format('YYYY/MM/DD HH:mm') + '<br />' + moment(endDateTime).format('YYYY/MM/DD HH:mm'));
 
 							map.setView([jQuery('#' + inpLatId).val(), jQuery('#' + inpLngId).val()]);
+							
+							/**
+							 *
+							 * Leaflet moving leaflet
+							 *
+							 * @description
+							 *
+							 * @version 2018/08/21 初始版本。
+							 *
+							 * @author ace
+							 *
+							 * @see <a href="http://bl.ocks.org/ramiroaznar/f399ffd29d1b4d48632604aebfc7b8cc">Adding or moving markers on a Leaflet map - bl.ocks.org</a>
+							 *
+							 * @comment
+							 *
+							 * @todo
+							 *
+							 */
+							marker.on('dragend', function() {
+							
+								jQuery('#' + inpLatId).val(marker.getLatLng()["lat"]);
+								jQuery('#' + inpLngId).val(marker.getLatLng()["lng"]);
+							});
 						}
 					} 
 					else { 
@@ -532,6 +561,11 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 					});
 				});
 
+				jQuery('#' + inpIntroductionId).on('focus', function(event) {
+				
+					jQuery(this).select();
+				});
+				
 				jQuery('#' + btnConfirmId).on('click', function(event) {
 				
 					clickConfirm = true;
@@ -628,12 +662,6 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				
 			var title = '活動地圖';
 			var openDateTime = new Date();
-			var map;
-			var selfPosition = {	// Taipei 101
-			
-				"latitude": 25.0340,
-				"longitude": 121.5645
-			};
 			
 			var easyDefaultPositionButton = L.easyButton({
 
@@ -656,7 +684,7 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 					{
 						"stateName": "add-new-event",
 						"title": "add new event",
-						"icon": "fa-plus",
+						"icon": "fa-plus-circle",
 						"onClick": function(btn, map) {
 				
 							var now = new Date();
@@ -746,6 +774,89 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 						"onClick": function(btn, map) {
 						
 							logout();
+						}
+					} 
+				]
+			});
+			
+			var easyShowAreaEventButton = L.easyButton({
+
+				states: [
+					{
+						"stateName": "show-area-event",
+						"title": "show area event",
+						"icon": "fa-eye",
+						"onClick": function(btn, map) {
+					
+							var tag;
+
+							var modalHeader, modalBody, modalFooter;
+							var baseModal;
+							
+							var viewLayer = null;
+							
+							tag = '<div class="modal-header">'
+									+ '  <h4 style="text-align: center;">活動資訊</h4>'
+									+ '</div>';
+							modalHeader = jQuery(tag);
+
+							tag = '<div class="modal-footer">'
+									+ '  <input type="button" class="btn btn-primary" data-dismiss="modal" value="關閉" />'
+									+ '</div>';
+							modalFooter = jQuery(tag);
+
+							tag = '<table class="table table-bordered table-hover table-responsive">'
+									+ '  <thead>'
+									+ '    <tr>'
+									+ '      <th style="text-align: center; cursor: default;">狀態</th>'
+									+ '      <th style="text-align: center; cursor: default;">活動名稱</th>'
+									+ '    </tr>'
+									+ '  </thead>'
+									+ '  <tbody class="rowlink"></tbody>'
+									+ '</table>';
+							modalBody = jQuery(tag);
+
+							map.eachLayer(function(layer) {
+							
+								var trElement;
+							
+								if ((layer instanceof L.Marker) && (map.getBounds().contains(layer.getLatLng()))) {
+								
+									if ((layer.options.icon.options.className == 'leaflet-div-icon-activing') || (layer.options.icon.options.className == 'leaflet-div-icon-will-active')  || (layer.options.icon.options.className == 'leaflet-div-icon-actived')) {
+									
+										tag = '<tr>'
+												+ '  <td style="text-align: center;"><span class="' + layer.options.icon.options.className + '"></span></td>'
+												+ '  <td style="text-align: left;">' + layer.originalData["title"] + '</td>'
+												+ '</tr>';
+										trElement = jQuery(tag);
+										
+										trElement.find('td').on('click', function(event) {
+										
+											viewLayer = layer;
+											
+											baseModal.modal('hide');
+										});
+										
+										modalBody.find('tbody').append(trElement);
+									}
+								}
+							});
+							
+							baseModal = FormUtils.addBaseModal(modalHeader, modalBody, modalFooter);
+							
+							baseModal.on('hidden.bs.modal', function(event) {
+						
+								jQuery(this).remove();
+								
+								if (viewLayer != null) {
+								
+									map.setView(viewLayer.getLatLng(), 15);
+									
+									viewLayer.openTooltip();
+								}
+							});
+							
+							baseModal.modal('show');
 						}
 					} 
 				]
@@ -858,16 +969,6 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				]
 			});
 			
-			firebase.initializeApp({
-
-				"apiKey": "AIzaSyBg5LJIDwF99Pg3JcwSvXKZT72XeW868N8",
-				"authDomain": "activitymap.firebaseapp.com",
-				"databaseURL": "https://activitymap.firebaseio.com",
-				"projectId": "firebase-activitymap",
-				"storageBucket": "firebase-activitymap.appspot.com",
-				"messagingSenderId": "749991636936"
-			});
-				
 			// 更新Title訊息
 			setTimeout(function() {
 
@@ -879,29 +980,51 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				}, 24 * 60 * 60 * 1000);
 			}, 24 * 60 * 60 * 1000 - openDateTime);
 
-			jQuery('body').append('<div id="maparea" style="height: 100%;"></div>');
+			var selfPosition = {	// Taipei 101
+			
+				"latitude": 25.0340,
+				"longitude": 121.5645
+			};
+			
+			var eventMap;
+			var baseLayerGroup = new L.layerGroup();
+			
+			firebase.initializeApp({
 
-			// map = L.map('maparea').setView([selfPosition["latitude"], selfPosition["longitude"]], 12);	// initialize map(Taipei 101)
-			map = L.map('maparea');
+				"apiKey": "AIzaSyBg5LJIDwF99Pg3JcwSvXKZT72XeW868N8",
+				"authDomain": "activitymap.firebaseapp.com",
+				"databaseURL": "https://activitymap.firebaseio.com",
+				"projectId": "firebase-activitymap",
+				"storageBucket": "firebase-activitymap.appspot.com",
+				"messagingSenderId": "749991636936"
+			});
+			
+			jQuery('body').append('<div id="eventMap" style="height: 100%;"></div>');
 
+			eventMap = L.map('eventMap');
+			
 			// set map tiles source
 			L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 					// attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
 					maxZoom: 18
 				}
-			).addTo(map);
+			).addTo(eventMap);
 			
-			easyDefaultPositionButton.addTo(map);
+			baseLayerGroup.addTo(eventMap);
 			
-			easyDefaultPositionButton.options.states[0].onClick(easyDefaultPositionButton, map);
+			easyDefaultPositionButton.addTo(eventMap);
+			
+			easyDefaultPositionButton.options.states[0].onClick(easyDefaultPositionButton, eventMap);
+			
+			easyShowAreaEventButton.addTo(eventMap);
 			
 			if ((location.protocol == 'http:') || (location.protocol == 'https:')) {
 			
-				easyAddNewEventButton.addTo(map);
+				easyAddNewEventButton.addTo(eventMap);
 			
-				easyLoginButton.addTo(map);
-				easyLogoutButton.addTo(map);
+				easyLoginButton.addTo(eventMap);
+				easyLogoutButton.addTo(eventMap);
 				
 				if (firebase.auth().currentUser) {
 				
@@ -913,7 +1036,7 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				}
 			}
 			
-			easySuggestButton.addTo(map);
+			easySuggestButton.addTo(eventMap);
 
 			if (typeof window.navigator.geolocation !== 'undefined') {
 
@@ -927,9 +1050,7 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 							"longitude": position.coords.longitude
 						};
 						
-						// map.setView([position.coords.latitude, position.coords.longitude], 12);
-
-						easyDefaultPositionButton.options.states[0].onClick(easyDefaultPositionButton, map);
+						easyDefaultPositionButton.options.states[0].onClick(easyDefaultPositionButton, eventMap);
 					},
 					function(positionError) {
 					
@@ -938,33 +1059,33 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				);
 			}
 
-			routineEvents(openDateTime, map);	// 當日資料
+			routineEvents(openDateTime, baseLayerGroup, eventMap);	// 當日資料
 			
-			routineEvents(moment(openDateTime).add(-1, 'days').toDate(), map);
-			routineEvents(moment(openDateTime).add(1, 'days').toDate(), map);
+			routineEvents(moment(openDateTime).add(-1, 'days').toDate(), baseLayerGroup, eventMap);
+			routineEvents(moment(openDateTime).add(1, 'days').toDate(), baseLayerGroup, eventMap);
 			
 			setTimeout(function() {
 
-				routineEvents(new Date(), map);
+				routineEvents(new Date(), baseLayerGroup, eventMap);
 				
 				setInterval(function() { 
 				
-					routineEvents(new Date(), map);
+					routineEvents(new Date(), baseLayerGroup, eventMap);
 				}, 24 * 60 * 60 * 1000);
 			}, (new Date((moment(openDateTime).add(2, 'days').toDate()).getFullYear(), (moment(openDateTime).add(2, 'days').toDate()).getMonth(), (moment(openDateTime).add(2, 'days').toDate()).getDate())) - openDateTime);
 			
-			firebaseListener(openDateTime, map);	// 當日資料
+			firebaseListener(openDateTime, baseLayerGroup, eventMap);	// 當日資料
 
-			firebaseListener(moment(openDateTime).add(-1, 'days').toDate(), map);
-			firebaseListener(moment(openDateTime).add(1, 'days').toDate(), map);
+			firebaseListener(moment(openDateTime).add(-1, 'days').toDate(), baseLayerGroup, eventMap);
+			firebaseListener(moment(openDateTime).add(1, 'days').toDate(), baseLayerGroup, eventMap);
 
 			setTimeout(function() {
 
-				firebaseListener(new Date(), map);
+				firebaseListener(new Date(), baseLayerGroup, eventMap);
 				
 				setInterval(function() { 
 				
-					firebaseListener(new Date(), map);
+					firebaseListener(new Date(), baseLayerGroup, eventMap);
 				}, 24 * 60 * 60 * 1000);
 			}, (new Date((moment(openDateTime).add(2, 'days').toDate()).getFullYear(), (moment(openDateTime).add(2, 'days').toDate()).getMonth(), (moment(openDateTime).add(2, 'days').toDate()).getDate())) - openDateTime);
 		});	// document ready
