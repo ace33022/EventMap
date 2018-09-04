@@ -178,9 +178,9 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 					
 					effectiveMarker = true;
 					
-					if ((beginDateTime - now) <= (60 * 60 * 1000)) {
+					if ((beginDateTime - now) <= (2 * 60 * 60 * 1000)) {
 					
-						// 活動前1小時
+						// 活動前2小時
 						divIcon = L.divIcon({"iconSize": L.point(25, 25), "className": "leaflet-div-icon-will-active"});
 
 						// 活動開始
@@ -188,7 +188,7 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 
 							layerGroup.removeLayer(marker);
 							setMarker(data, layerGroup, map);
-						}, (60 - now.getMinutes()) * 60 * 1000);
+						}, (2 * 60 - now.getMinutes()) * 60 * 1000);
 					}
 					else {
 					
@@ -196,7 +196,7 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 
 							layerGroup.removeLayer(marker);
 							setMarker(data, layerGroup, map);
-						}, beginDateTime - now - (60 * 60 * 1000));
+						}, beginDateTime - now - (2 * 60 * 60 * 1000));
 					}
 				}
 				else if (endDateTime <= now) {
@@ -867,103 +867,44 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				states: [
 					{
 						"stateName": "suggest",
-						"title": "give me suggest",
+						"title": "give me suggestion",
 						"icon": "fa-comments",
 						"onClick": function(btn, map) {
-					
-							var modalId = 'modal' + Math.random().toString(36).substr(2, 6);
-							var textCommentId = 'textComment' + Math.random().toString(36).substr(2, 6);
-							var btnConfirmId = 'btnConfirm' + Math.random().toString(36).substr(2, 6);
+						
+							FormUtils.showTextareaModal({
+							
+								"title": "問題回報／建議事項",
+								"callback": function(data) {
 								
-							var tag;
-							var baseModal, modalHeader, modalBody, modalFooter;
-							
-							var showRegardMessage = false;
-							
-							tag = '<div id="' + modalId + '" class="modal fade" tabindex="-1" role="dialog">'
-									+ '  <div class="modal-dialog">'
-									+ '    <div class="modal-content">'
-									+ '    </div>'
-									+ '  </div>'
-									+ '</div>';
-							baseModal = jQuery(tag);
-
-							tag = '<div class="modal-header">'
-									+ '  <h4 class="modal-title">問題回報／建議事項</h4>'
-									+ '</div>';
-							modalHeader = jQuery(tag);
-							baseModal.find('.modal-content').append(modalHeader);
-
-							tag = '<div class="modal-body">'
-									+ '  <form class="form-horizontal" role="form">'
-									+ '    <div class="form-group">'
-									+ '      <div class="col-sm-12">'
-									+ '        <textarea id="' + textCommentId + '" rows="5" class="form-control" style="resize: none;"></textarea>'
-									+ '      </div>'
-									+ '    </div>'
-									+ '  </form>'
-									+ '</div>';
-							modalBody = jQuery(tag);
-							baseModal.find('.modal-content').append(modalBody);
-	
-							tag = '<div class="modal-footer">'
-									+ '  <input type="button" id="' + btnConfirmId + '" class="btn btn-primary" value="確定">'
-									+ '  <input type="button" class="btn" data-dismiss="modal" value="取消">'
-									+ '</div>';
-							modalFooter = jQuery(tag);
-							baseModal.find('.modal-content').append(modalFooter);
-
-							baseModal.appendTo('body');
-							
-							jQuery('#' + btnConfirmId).on('click', function(event) {
-							
-								var ajaxSettings = {
+									var ajaxSettings = {
 								
-									// "contentType": "application/json; charset=utf-8",
-									"dataType": "json",
-									"url": "https://script.google.com/macros/s/AKfycbx-VcoJNkmNvNdpUmUEPv8Yc9054NfyWOFd3qZCrqyqZ_hjDbc/exec",
-									"data": jQuery('#' + textCommentId).val(),
-									"type": "POST",
-									"success": function(data, textStatus, jqXHR) {
+										// "contentType": "application/json; charset=utf-8",
+										"dataType": "json",
+										"url": "https://script.google.com/macros/s/AKfycbx-VcoJNkmNvNdpUmUEPv8Yc9054NfyWOFd3qZCrqyqZ_hjDbc/exec",
+										"data": data,
+										"type": "POST",
+										"success": function(data, textStatus, jqXHR) {
 									
-										if (data["error_code"] == 0) {
+											if (data["error_code"] == 0) {
 										
-											showRegardMessage = true;
+											}
+											else {
+										
+												// show error message
+											}
 											
-											jQuery('#' + modalId).modal('hide');
-										}
-										else {
-										
-											// show error message
-										}
-									},
-									"error": function(jqXHR, textStatus, errorThrown) {
+											FormUtils.showMessage('感謝提供建議或問題反應！！');
+										},
+										"error": function(jqXHR, textStatus, errorThrown) {
 									
-										// show error message
-									}
-								};
+											// show error message
+											FormUtils.showMessage('感謝提供建議或問題反應！！');
+										}
+									};
 								
-								jQuery.ajax(ajaxSettings);
-							});
-							
-							jQuery('#' + modalId).on('shown.bs.modal', function() { 
-							
-								jQuery('#' + textCommentId).focus();
-							});
-							
-							jQuery('#' + modalId).on('hidden.bs.modal', function() { 
-							
-								jQuery(this).remove();
-								
-								if (showRegardMessage == true) {
-								
-									FormUtils.showMessage('感謝提供建議或問題反應！！');
+									jQuery.ajax(ajaxSettings);
 								}
 							});
-							
-							jQuery('#' + modalId).modal({keyboard: false});
-
-							jQuery('#' + modalId).modal('show');
 						}
 					} 
 				]
