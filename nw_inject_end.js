@@ -552,15 +552,18 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				
 				jQuery('#' + inpAddressId).on('change', function(event) { 
 				
-					var searchUrl = 'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?outSr=4326&forStorage=false&outFields=*&maxLocations=5&f=json&singleLine=' + encodeURI(jQuery(this).val());
+					var searchUrl = 'https://script.google.com/macros/s/AKfycbxNr_AMxteL0Oyf--G1Uu5fL2gT1xVRyv1bCy-9-g/exec?address=' + jQuery(this).val();
 				
 					jQuery.getJSON(searchUrl, function(data) {
 				
-						jQuery('#' + inpLatId).val(data["candidates"][0]["location"]["y"]);
-						jQuery('#' + inpLngId).val(data["candidates"][0]["location"]["x"]);
+						if (data["error_code"] == 0) {
+						
+							jQuery('#' + inpLatId).val(data["data"]["latitude"]);
+							jQuery('#' + inpLngId).val(data["data"]["longitude"]);
+						}
 					});
 				});
-
+				
 				jQuery('#' + inpIntroductionId).on('focus', function(event) {
 				
 					jQuery(this).select();
