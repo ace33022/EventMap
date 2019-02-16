@@ -1,159 +1,91 @@
 ﻿
 
-# EventMap
+@see {@link https://ace33022.github.io/EventMap/|活動地圖}
+@see {@link http://127.0.0.1:8080/program/MAP00030|MAP00030}
 
-	https://ace33022.github.io/EventMap/
-	http://127.0.0.1:8080/program/MAP00030
+@see {@link https://ace33022.github.io/getLatLng/|Get Latitude and Longitude on map}
+
+@see {@link https://www.latlong.net/|Latitude and Longitude Finder on Map Get Coordinates}
+
+@see {@link https://cloud.google.com/maps-platform/|Google 地圖平台 - Geo-location API  |  Google Maps Platform  |  Google Cloud}
+@see {@link https://developers.google.com/maps/documentation/javascript/tutorial|Overview  |  Maps JavaScript API  |  Google Developers}
+
+@see {@link https://www.mapbox.com/|Mapbox}
+
+@see {@link https://leafletjs.com/examples/layers-control/|Layer Groups and Layers Control - Leaflet - a JavaScript library for interactive maps}
+@see {@link https://leafletjs.com/examples/layers-control/#layer-groups-and-layers-control|Layer Groups and Layers Control - Leaflet - a JavaScript library for interactive maps}
+
+@see {@link https://leafletjs.com/examples/custom-icons/|Markers With Custom Icons - Leaflet - a JavaScript library for interactive maps}
 	
-# Latitude and Longitude Finder on Map Get Coordinates(https://www.latlong.net/)
+@see {@link https://www.tutorialspoint.com/leafletjs|LeafletJS Tutorial}
+	
+@see {@link http://cliffcloud.github.io/Leaflet.EasyButton/v1/|Leaflet.EasyButton}
+@see {@link https://github.com/CliffCloud/Leaflet.EasyButton|CliffCloud/Leaflet.EasyButton: leaflet control buttons with icons and callbacks}
 
-# http://khh.travel/ScenicListByMap.aspx?a=1056&l=1
+@see {@link http://esri.github.io/esri-leaflet/|Esri Leaflet}
+@see {@link https://github.com/Esri/esri-leaflet|Esri/esri-leaflet: A lightweight set of tools for working with ArcGIS services in Leaflet.}
+	
+@see {@link https://gis.stackexchange.com/questions/238414/leaflet-how-to-add-a-new-and-remove-an-old-marker-every-time-the-user-click-on/238419|javascript - Leaflet: how to add a new and remove an old marker every time the user click on the map? - Geographic Information Systems Stack Exchange}
+@see {@link https://stackoverflow.com/questions/47697215/trigger-click-on-leaflet-marker|javascript - Trigger click on leaflet marker - Stack Overflow}
+
+@see {@link https://firebase.google.com/|Firebase}
+
+	@see {@link https://console.firebase.google.com/|Firebase Console}
+	
+	@see {@link https://firebase.google.com/products/|Firebase}
+	
+	@see {@link https://firebase.google.com/docs/|Documentation  |  Firebase}
+	
+		@see {@link https://firebase.google.com/docs/auth/|Firebase Authentication  |  Firebase}
+			@see {@link https://firebase.google.com/docs/auth/web/start|Get Started with Firebase Authentication on Websites  |  Firebase}
+			@see {@link https://firebase.google.com/docs/auth/web/google-signin|Authenticate Using Google Sign-In with JavaScript  |  Firebase}
+		
+		@see {@link https://firebase.google.com/docs/web/setup|Add Firebase to your JavaScript Project  |  Firebase}
+	
+		@see {@link https://firebase.google.com/docs/database/|Firebase Realtime Database  |  Firebase Realtime Database  |  Firebase}
+			@see {@link https://firebase.google.com/docs/database/web/start|Installation & Setup in JavaScript  |  Firebase Realtime Database  |  Firebase}
+			@see {@link https://firebase.google.com/docs/database/web/structure-data|Structure Your Database  |  Firebase Realtime Database  |  Firebase}
+			@see {@link https://firebase.google.com/docs/database/web/read-and-write|Read and Write Data on the Web  |  Firebase Realtime Database  |  Firebase}
+			@see {@link https://firebase.google.com/docs/database/web/lists-of-data|Work with Lists of Data on the Web  |  Firebase Realtime Database  |  Firebase}
+		
+		@see {@link https://firebase.google.com/docs/reference/|Firebase API Reference  |  Firebase}
+			@see {@link https://firebase.google.com/docs/reference/js/|Overview  |  Firebase}
+				@see {@link https://firebase.google.com/docs/reference/js/firebase|Namespace: firebase  |  Firebase}
+					@see {@link https://firebase.google.com/docs/reference/js/firebase.database|Namespace: database  |  Firebase}
+	
+		@see {@link https://firebase.google.com/docs/cloud-messaging/|Firebase Cloud Messaging  |  Firebase}
+			@see {@link https://firebase.google.com/docs/cloud-messaging/js/client|Set up a JavaScript Firebase Cloud Messaging client app  |  Firebase}
+			
+		@see {@link https://firebase.google.com/docs/storage/|Cloud Storage  |  Firebase}
+		
+		@see {@link https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot|Interface: DataSnapshot  |  Firebase}
+		
+		@see {@link https://firebase.google.com/docs/cli/|Firebase CLI Reference  |  Firebase}
+		@see {@link https://firebase.google.com/docs/hosting/|Firebase Hosting  |  Firebase}
+	
+		@see {@link https://firebase.google.com/docs/samples/|Firebase}
+			@see {@link https://github.com/firebase/quickstart-js|firebase/quickstart-js: Firebase Quickstart Samples for Web}
+			@see {@link https://github.com/firebase/quickstart-js/tree/master/database|quickstart-js/database at master · firebase/quickstart-js}
+			@see {@link https://github.com/firebase/quickstart-js/tree/master/storage|quickstart-js/storage at master · firebase/quickstart-js}
+			
+		@see {@link https://firebase.googleblog.com/|The Firebase Blog}
+			@see {@link https://firebase.googleblog.com/2013/06/how-to-build-presence-system.html|The Firebase Blog: How To Build a Presence System}
+	
+	@see {@link https://www.ithome.com.tw/news/106045|新版Firebase來了！Google要為App開發者打造一套萬用雲端後臺 | iThome}
+	@see {@link https://tw.alphacamp.co/blog/2016-07-22-firebase|Firebase 是什麼 ? 集 APP 後端開發與分析於一身的強大工具！ - ALPHA Camp blog}
+	
+	@see {@link https://medium.com/@OvisSung/firebase-hosting-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99%E9%83%A8%E7%BD%B2-deploy-8d5d7fd3b836|Firebase Hosting 靜態網站部署試用 – Medium}
+
+	@see {@link https://stackoverflow.com/questions/30910704/how-do-i-link-each-user-to-their-data-in-firebase|How do I link each user to their data in Firebase? - Stack Overflow}
+
+@see {@link https://khh.travel/ScenicListByMap.aspx?a=1056&l=1|地圖導覽 - 高雄旅遊網}
 	20160929,1400,20160929,1630,【觀光工廠】珍芳烏魚子見學工廠DIY體驗,高雄市新衙路296巷81弄13號,http://www.citytalk.tw/event/233226-%E3%80%90%E8%A7%80%E5%85%89%E5%B7%A5%E5%BB%A0%E3%80%91%E7%8F%8D%E8%8A%B3%E7%83%8F%E9%AD%9A%E5%AD%90%E8%A6%8B%E5%AD%B8%E5%B7%A5%E5%BB%A0DIY%E9%AB%94%E9%A9%97
 	20160929,0800,20160929,1700,【觀光工廠】台灣滷味博物館DIY體驗,高雄市岡山區本洲產業園區本工一路25號,http://www.citytalk.tw/event/233225-%E3%80%90%E8%A7%80%E5%85%89%E5%B7%A5%E5%BB%A0%E3%80%91%E5%8F%B0%E7%81%A3%E6%BB%B7%E5%91%B3%E5%8D%9A%E7%89%A9%E9%A4%A8DIY%E9%AB%94%E9%A9%97
 	20160929,0900,20160929,1800,【觀光工廠】彪琥台灣鞋故事館DIY體驗,高雄市三民區民族一路335巷43-1號,http://www.citytalk.tw/event/230694-%E3%80%90%E8%A7%80%E5%85%89%E5%B7%A5%E5%BB%A0%E3%80%91%E5%BD%AA%E7%90%A5%E5%8F%B0%E7%81%A3%E9%9E%8B%E6%95%85%E4%BA%8B%E9%A4%A8DIY%E9%AB%94%E9%A9%97
 	20160929,1200,20160929,2000,火腿藝廊｜好字在高雄！活版鉛字創意展,高雄市大義街2-1號,http://www.citytalk.tw/event/279230-%E7%81%AB%E8%85%BF%E8%97%9D%E5%BB%8A%EF%BD%9C%E5%A5%BD%E5%AD%97%E5%9C%A8%E9%AB%98%E9%9B%84%EF%BC%81%E6%B4%BB%E7%89%88%E9%89%9B%E5%AD%97%E5%89%B5%E6%84%8F%E5%B1%95
 	20160929,1400,20160929,2200,檨仔林埤濕地公園,高雄市三民區鼎金後路461巷,http://khh.travel/Article.aspx?a=6200&l=1&stype=1056&sitem=4080
+	
+@see {@link https://ifoodie.tw/|愛食記 - 台灣美食App、餐廳推薦}
 
-# 介紹資料改用 TextArea
-
-# 區域內活動資料查詢！
-
-	# stefanocudini/leaflet-search: Search stuff in a Leaflet map(https://github.com/stefanocudini/leaflet-search)
-		javascript - Searching markers with Leaflet.Control.Search from drop down list - Stack Overflow(https://stackoverflow.com/questions/35772717/searching-markers-with-leaflet-control-search-from-drop-down-list)
-	
-	#	Leaflet.Control.Search(http://labs.easyblog.it/maps/leaflet-search/)
-		stefanocudini/leaflet-search: Search stuff in a Leaflet map(https://github.com/stefanocudini/leaflet-search)
-		
-	#	Leaflet List Markers(http://labs.easyblog.it/maps/leaflet-list-markers/)
-		stefanocudini/leaflet-list-markers: A Leaflet Control for listing visible markers/features in a interactive box(https://github.com/stefanocudini/leaflet-list-markers)
-		
-	#	Filtering map markers with Leaflet.js: a brief technical overview – Web Solutions(https://blogs.kent.ac.uk/websolutions/2015/01/29/filtering-map-markers-with-leaflet-js-a-brief-technical-overview/)
-	
-	# javascript - Finding a specific layer in a Leaflet LayerGroup where layers are polygons - Stack Overflow(https://stackoverflow.com/questions/34322864/finding-a-specific-layer-in-a-leaflet-layergroup-where-layers-are-polygons)
-		
-	# gis - Find layers in current map view with Leafletjs - Stack Overflow(https://stackoverflow.com/questions/15755219/find-layers-in-current-map-view-with-leafletjs)	
-	#	javascript - Get a list of markers/layers within current map bounds in Leaflet - Stack Overflow(https://stackoverflow.com/questions/22081680/get-a-list-of-markers-layers-within-current-map-bounds-in-leaflet/37665972)
-	# adding layers in layer group dynamically to layer control in leaflet - Stack Overflow(https://stackoverflow.com/questions/25372033/adding-layers-in-layer-group-dynamically-to-layer-control-in-leaflet)
-		http://jsfiddle.net/FranceImage/9xjt8223/
-	# Leaflet Example with LayerGroup(https://codepen.io/gvenech/pen/QEjEGg)
-		
-		# 依目前的設計架構，marker自行remove後會出現2筆資料？
-			# 移除的方式有誤？
-			
-		# 顯示的資料是否要動態新增/移除？
-		
-# 如何修改個人活動？
-	# 取得個人建立之活動資料
-		# filter有效的活動資料？
-		# 修改時間的狀況？
-			# 記錄位置將變動，因此統一採取Delete->Set方式處理？
-
-# 刪除個人活動的處理方式？
-	# 新增旗標控制活動是否有效？
-
-# 查詢指定時間區間的活動資料
-	# 只可查詢今天以後的資料
-	# 資料呈現使用藍色圖標
-
-# 愛食記 - 台灣美食App、餐廳推薦(https://ifoodie.tw/)
-
-	# 吉林夜市月底的煎餃特價優惠
-	
-# Firebase(https://firebase.google.com/)
-
-	# Firebase console(https://console.firebase.google.com/)
-		https://console.firebase.google.com/u/0/project/firebase-activitymap/overview
-		https://console.firebase.google.com/u/0/project/firebase-activitymap/database
-	
-	# Firebase(https://firebase.google.com/features/)
-	
-	# Documentation  |  Firebase(https://firebase.google.com/docs/)
-	
-		# Add Firebase to your JavaScript Project  |  Firebase(https://firebase.google.com/docs/web/setup)
-	
-		# Firebase Authentication  |  Firebase(https://firebase.google.com/docs/auth/)
-			# Get Started with Firebase Authentication on Websites  |  Firebase(https://firebase.google.com/docs/auth/web/start)
-			# Authenticate Using Google Sign-In with JavaScript  |  Firebase(https://firebase.google.com/docs/auth/web/google-signin)
-		
-		# Firebase Realtime Database  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/)
-			# Installation & Setup in JavaScript  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/web/start)
-			# Structure Your Database  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/web/structure-data)
-			# Read and Write Data on the Web  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/web/read-and-write)
-			# Work with Lists of Data on the Web  |  Firebase Realtime Database  |  Firebase(https://firebase.google.com/docs/database/web/lists-of-data)
-		
-		# Firebase API Reference  |  Firebase(https://firebase.google.com/docs/reference/)
-			# Overview  |  Firebase(https://firebase.google.com/docs/reference/js/)
-				# Namespace: firebase  |  Firebase(https://firebase.google.com/docs/reference/js/firebase)
-					# Namespace: database  |  Firebase(https://firebase.google.com/docs/reference/js/firebase.database)
-	
-		# Firebase Cloud Messaging  |  Firebase(https://firebase.google.com/docs/cloud-messaging/)
-			Set Up a JavaScript Firebase Cloud Messaging Client App  |  Firebase(https://firebase.google.com/docs/cloud-messaging/js/client)
-			
-		# Cloud Storage  |  Firebase(https://firebase.google.com/docs/storage/)
-		
-		# Interface: DataSnapshot  |  Firebase(https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot)
-		
-		https://firebase.google.com/docs/cli/
-		https://firebase.google.com/docs/hosting/
-	
-		# Firebase(https://firebase.google.com/docs/samples/)
-			https://github.com/firebase/quickstart-js
-			https://github.com/firebase/quickstart-js/tree/master/database
-			https://github.com/firebase/quickstart-js/tree/master/storage
-	
-	# 新版Firebase來了！Google要為App開發者打造一套萬用雲端後臺 | iThome(http://www.ithome.com.tw/news/106045)
-	# Firebase 是什麼 ? 集 APP 後端開發與分析於一身的強大工具！ - ALPHA Camp Blog(https://blog.alphacamp.co/2016/07/22/firebase/)
-	
-	# Firebase Hosting 靜態網站部署試用 – Medium(https://medium.com/@OvisSung/firebase-hosting-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99%E9%83%A8%E7%BD%B2-deploy-8d5d7fd3b836#.3nb0744wh)
-	
-	# The Firebase Blog: How To Build a Presence System(https://firebase.googleblog.com/2013/06/how-to-build-presence-system.html)
-
-	# How do I link each user to their data in Firebase? - Stack Overflow(http://stackoverflow.com/questions/30910704/how-do-i-link-each-user-to-their-data-in-firebase)
-
-# Google 地圖平台 - Geo-location API  |  Google Maps Platform  |  Google Cloud(https://cloud.google.com/maps-platform/)
-	# Overview  |  Maps JavaScript API  |  Google Developers(https://developers.google.com/maps/documentation/javascript/tutorial)
-
-# OpenStreetMap(https://www.openstreetmap.org/)
-
-	OpenStreetMap - Wikipedia(https://en.wikipedia.org/wiki/OpenStreetMap)
-
-# Leaflet - a JavaScript library for interactive maps(https://leafletjs.com/)	
-	Leaflet/Leaflet: JavaScript library for mobile-friendly interactive maps(https://github.com/Leaflet/Leaflet)
-	
-	https://leafletjs.com/reference.html
-	https://leafletjs.com/reference-1.3.4.html
-	
-	https://leafletjs.com/reference-1.3.4.html#layer
-	https://leafletjs.com/reference-1.3.4.html#interactive-layer
-	https://leafletjs.com/reference-1.3.4.html#marker
-	
-	https://leafletjs.com/reference-1.3.4.html#control-layers
-	https://leafletjs.com/reference-1.3.4.html#gridlayer
-	https://leafletjs.com/reference-1.3.4.html#tilelayer
-	
-	https://leafletjs.com/reference-1.3.4.html#layergroup
-
-	#	Layer Groups and Layers Control - Leaflet - a JavaScript library for interactive maps(https://leafletjs.com/examples/layers-control/#layer-groups-and-layers-control)
-	
-	# LeafletJS Tutorial(https://www.tutorialspoint.com/leafletjs)
-	
-	# Leaflet.EasyButton(http://cliffcloud.github.io/Leaflet.EasyButton/v1/)
-		CliffCloud/Leaflet.EasyButton: leaflet control buttons with icons and callbacks(https://github.com/CliffCloud/Leaflet.EasyButton)
-
-	# Esri Leaflet(http://esri.github.io/esri-leaflet/)
-		Esri/esri-leaflet: A lightweight set of tools for working with ArcGIS services in Leaflet.(https://github.com/Esri/esri-leaflet)
-
-	# javascript - Leaflet: how to add a new and remove an old marker every time the user click on the map? - Geographic Information Systems Stack Exchange(https://gis.stackexchange.com/questions/238414/leaflet-how-to-add-a-new-and-remove-an-old-marker-every-time-the-user-click-on/238419)
-	
-# Mapbox(https://www.mapbox.com/)
-	
-# Minimize / Maximize modal of Bootstrap by using jQuery: 3 demos(https://www.jquery-az.com/minimize-maximize-modal-of-bootstrap-by-using-jquery-3-demos/)
-	A demo of modal with minimize and maximize options(https://www.jquery-az.com/jquery/demo.php?ex=58.0_1)
-	
-# Custom Bootstrap modal backdrops(https://codepen.io/artzeeone/pen/yJVJBr)
-	
-# https://eonasdan.github.io/bootstrap-datetimepicker/
-	onchange - jQuery bootstrap-datetimepicker change event - Stack Overflow(https://stackoverflow.com/questions/31858920/jquery-bootstrap-datetimepicker-change-event)
-
-# javascript - Trigger click on leaflet marker - Stack Overflow(https://stackoverflow.com/questions/47697215/trigger-click-on-leaflet-marker)
+@todo 2019/02/15 吉林夜市月底的煎餃特價優惠
 

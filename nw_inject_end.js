@@ -1,28 +1,32 @@
 /**
  *
- * ActivityMap
- *
- * @description
+ * @description 活動地圖
  *
  * @version 2018/08/05 初始版本。
  *
  * @author ace
  *
- * @see <a href="http://requirejs.org/">RequireJS</a>
+ * @see {@link http://requirejs.org/|RequireJS}
  *
- * @see <a href="https://jquery.com/">jQuery</a>
+ * @see {@link https://jquery.com/|jQuery}
  *
- * @see <a href="http://underscorejs.org/">Underscore.js</a>
- * @see <a href="https://github.com/jashkenas/underscore">jashkenas/underscore: JavaScript's utility _ belt</a>
- * @see <a href="http://backbonejs.org/">Backbone.js</a>
- * @see <a href="https://github.com/jashkenas/backbone">jashkenas/backbone: Give your JS App some Backbone with Models, Views, Collections, and Events</a>
- * @see <a href="https://github.com/jashkenas/backbone/wiki/Tutorials%2C-blog-posts-and-example-sites">Tutorials, blog posts and example sites · jashkenas/backbone Wiki</a>
+ * @see {@link https://getbootstrap.com/|Bootstrap · The most popular HTML, CSS, and JS library in the world.}
  *
- * @see <a href="https://getbootstrap.com/">Bootstrap · The most popular HTML, CSS, and JS library in the world.</a>
+ * @see {@link http://underscorejs.org/|Underscore.js}
+ * @see {@link https://github.com/jashkenas/underscore|jashkenas/underscore: JavaScript's utility _ belt}
  *
- * @comment
+ * @see {@link http://backbonejs.org/|Backbone.js}
+ * @see {@link https://github.com/jashkenas/backbone|jashkenas/backbone: Give your JS App some Backbone with Models, Views, Collections, and Events}
+ * @see {@link https://github.com/jashkenas/backbone/wiki/Tutorials%2C-blog-posts-and-example-sites|Tutorials, blog posts and example sites · jashkenas/backbone Wiki}
  *
- * @todo
+ * @see {@link https://www.openstreetmap.org/|OpenStreetMap}
+ * @see {@link https://en.wikipedia.org/wiki/OpenStreetMap|OpenStreetMap - Wikipedia}
+ *
+ * @see {@link https://leafletjs.com/|Leaflet - a JavaScript library for interactive maps}
+ * @see {@link https://github.com/Leaflet/Leaflet|Leaflet/Leaflet: JavaScript library for mobile-friendly interactive maps}
+ *
+ * @see {@link https://leafletjs.com/reference-1.3.4.html|Documentation - Leaflet - a JavaScript library for interactive maps}
+ * @see {@link https://leafletjs.com/reference-1.4.0.html|Documentation - Leaflet - a JavaScript library for interactive maps}
  *
  */
 
@@ -354,6 +358,22 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				if ((check == true) && (typeof callback === 'function')) callback(eventData);
 			}
 			
+			/**
+			 *
+			 * @description showEventInputModal
+			 *
+			 * @version 2019/02/15 初始版本。
+			 *
+			 * @author ace
+			 *
+			 * @see {@link https://codepen.io/artzeeone/pen/yJVJBr|Custom Bootstrap modal backdrops}
+			 * @see {@link https://www.jquery-az.com/minimize-maximize-modal-of-bootstrap-by-using-jquery-3-demos/|Minimize / Maximize modal of Bootstrap by using jQuery: 3 demos}
+			 * @see {@link https://www.jquery-az.com/jquery/demo.php?ex=58.0_1|A demo of modal with minimize and maximize options}
+			 *
+			 * @see {@link https://eonasdan.github.io/bootstrap-datetimepicker/|https://eonasdan.github.io/bootstrap-datetimepicker/}
+			 * @see {@link https://stackoverflow.com/questions/31858920/jquery-bootstrap-datetimepicker-change-event|onchange - jQuery bootstrap-datetimepicker change event - Stack Overflow}
+			 *
+			 */			
 			function showEventInputModal(title, btn, map, eventData, callback) {
 			
 				var modalId = 'modal' + Math.random().toString(36).substr(2, 6);
@@ -782,6 +802,31 @@ Configurations.loadJS(Configurations.requirejsFile, function() {
 				]
 			});
 			
+			/**
+			 *
+			 * @description easyShowAreaEventButton
+			 *
+			 * @version 2018/08/05 初始版本。
+			 *
+			 * @author ace
+			 *
+			 * @see {@link https://stackoverflow.com/questions/35772717/searching-markers-with-leaflet-control-search-from-drop-down-list|javascript - Searching markers with Leaflet.Control.Search from drop down list - Stack Overflow}
+			 * @see {@link https://stackoverflow.com/questions/34322864/finding-a-specific-layer-in-a-leaflet-layergroup-where-layers-are-polygons|javascript - Finding a specific layer in a Leaflet LayerGroup where layers are polygons - Stack Overflow}
+			 * @see {@link https://stackoverflow.com/questions/15755219/find-layers-in-current-map-view-with-leafletjs|gis - Find layers in current map view with Leafletjs - Stack Overflow}
+			 * @see {@link https://stackoverflow.com/questions/22081680/get-a-list-of-markers-layers-within-current-map-bounds-in-leaflet/37665972|javascript - Get a list of markers/layers within current map bounds in Leaflet - Stack Overflow}
+			 * @see {@link https://stackoverflow.com/questions/25372033/adding-layers-in-layer-group-dynamically-to-layer-control-in-leaflet|adding layers in layer group dynamically to layer control in leaflet - Stack Overflow}
+			 *
+			 * @see {@link https://github.com/stefanocudini/leaflet-search|stefanocudini/leaflet-search: Search stuff in a Leaflet map}
+			 * @see {@link https://labs.easyblog.it/maps/leaflet-search/|Leaflet.Control.Search}
+			 * @see {@link https://github.com/stefanocudini/leaflet-list-markers|stefanocudini/leaflet-list-markers: A Leaflet Control for listing visible markers/features in a interactive box}
+			 * @see {@link https://labs.easyblog.it/maps/leaflet-list-markers/|Leaflet List Markers}
+			 *
+			 * @see {@link https://blogs.kent.ac.uk/websolutions/2015/01/29/filtering-map-markers-with-leaflet-js-a-brief-technical-overview/|Filtering map markers with Leaflet.js: a brief technical overview – Web Solutions}
+			 *
+			 * @see {@link http://jsfiddle.net/FranceImage/9xjt8223/|Dynamic Layer Groups - JSFiddle}
+			 * @see {@link https://codepen.io/gvenech/pen/QEjEGg|Leaflet Example with LayerGroup}
+			 *
+			 */
 			var easyShowAreaEventButton = L.easyButton({
 
 				states: [
